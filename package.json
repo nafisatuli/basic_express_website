@@ -4,7 +4,10 @@
   "description": "Basic express website for practice",
   "main": "app.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "body-parser": "1.19.0",
+    "jade": "1.11.0",
+    "nodemailer": "6.4.11"
   },
   "devDependencies": {},
   "scripts": {
