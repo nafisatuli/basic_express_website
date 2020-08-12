@@ -1,8 +1,7 @@
 var express = require("express");
 var path = require("path");
-var bodyparser = require("body-parser");
+var bodyParser = require("body-parser");
 var nodemailer = require("nodemailer");
-const bodyParser = require("body-parser");
 
 //initialize
 var app = express();
@@ -29,6 +28,44 @@ app.get("/contact", function (req, res) {
 });
 app.post("/contact/send", function (req, res) {
   //console.log("Test"); //check
+  var transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "myemail@gmail.com",
+      pass: "mypass",
+    },
+  });
+  //set up mail options
+  var mailOptions = {
+    from: "Nafisa Hasan <myemail@gmail.com>",
+    to: "",
+    subject: "Website Submission",
+    text:
+      "You have a submission with following details... Name: " +
+      req.body.name +
+      " Email: " +
+      req.body.email +
+      " Message: " +
+      req.body.message,
+    html:
+      "<p>You have a submission with following details...</p><ul><li>Name: " +
+      req.body.name +
+      "</li><li>Email: " +
+      req.body.email +
+      "</li><li>Message: " +
+      req.body.message +
+      "</li></ul>",
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log("Error");
+      console.log(error);
+      res.redirect("/"); //to homapage
+    } else {
+      console.log("Message sent: " + info.response);
+      res.redirect("/");
+    }
+  });
 });
 
 app.listen(3000);
