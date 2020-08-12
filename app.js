@@ -27,6 +27,9 @@ app.get("/about", function (req, res) {
 app.get("/contact", function (req, res) {
   res.render("contact");
 });
+app.post("/contact/send", function (req, res) {
+  //console.log("Test"); //check
+});
 
 app.listen(3000);
 console.log("server is running on port 3000");

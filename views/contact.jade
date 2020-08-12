@@ -4,15 +4,15 @@ block content
   form(method='post',action='contact/send')
    h1 Contact
     .form-group
-     label Name
+     label(style="font-size:22px") Name
      input.form-control(type="text",
      name='name',placeholder="Enter your name")
     .form-group
-     label Email
+     label(style="font-size:22px") Email
      input.form-control(type="email",
      name='email',placeholder="Enter your email")
     .form-group
-     label Message
-     textarea.form-control(name='message',placeholder="Enter your message")
+     label(style="font-size:22px") Message
+     textarea.form-control(name='message',placeholder="Enter your message",cols="40", rows="5")
     button.btn.btn-default(type='submit') Submit
     
